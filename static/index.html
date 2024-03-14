@@ -9,7 +9,45 @@
   <body>
     <div class="flex flex-col w-screen items-center h-screen">
       <img class="w-2/5" src="./teams.png" />
-      <img class="w-2/3" src="./stage.png" />
+      <img id="phase" class="w-2/3" src="./stage1.png" />
+      <div class="flex gap-x-[10px]">
+        <a id="1" href="/" class="underline text-blue-400">Phase 1</a>
+        <a id="2" href="/2" class="underline text-blue-400">Phase 2</a>
+        <a id="3" href="/3" class="underline text-blue-400">Phase 3</a>
+        <a id="4" href="/4" class="underline text-blue-400">Phase 4</a>
+        <a id="5" href="/5" class="underline text-blue-400">Phase 5</a>
+      </div>
     </div>
+    <script>
+      window.onload = function () {
+        let num = 0;
+        switch (window.location.pathname) {
+          case "/2":
+            num = 2;
+            break;
+          case "/3":
+            num = 3;
+            break;
+          case "/4":
+            num = 4;
+            break;
+          case "/5":
+            num = 5;
+            break;
+          default:
+            num = 1;
+            break;
+        }
+
+        console.log(num);
+        document
+          .querySelector("img#phase")
+          .setAttribute("src", `stage${num}.png`);
+
+        document
+          .getElementById(`${num}`)
+          .classList.remove("underline", "text-blue-400");
+      };
+    </script>
   </body>
 </html>
